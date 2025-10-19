@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>종목 추천 리포트</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f1f5f9; }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); padding: 2rem; }
+        .editable { min-height: 1.5em; padding: 0.25rem; }
+        [contenteditable="true"] { outline: 2px dashed #3b82f6; background-color: #eff6ff; border-radius: 0.25rem;}
+        .editor-controls { background-color: white; color: black; padding: 1rem; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 1rem; z-index: 50; }
+        .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-weight: 700; font-size: 0.875rem; }
+        .strategy-box { border-left: 4px solid; padding-left: 1rem; margin-top: 1rem; margin-bottom: 1rem; }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.mx-auto{margin-left:auto;margin-right:auto}.my-8{margin-top:2rem;margin-bottom:2rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mr-2{margin-right:0.5rem}.mt-2{margin-top:0.5rem}.flex{display:flex}.h-4{height:1rem}.w-4{width:1rem}.max-w-4xl{max-width:56rem}.items-center{align-items:center}.justify-between{justify-content:space-between}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.rounded-lg{border-radius:0.5rem}.border-b-2{border-bottom-width:2px}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.border-green-500{--tw-border-opacity:1;border-color:rgb(34 197 94 / var(--tw-border-opacity, 1))}.border-red-500{--tw-border-opacity:1;border-color:rgb(239 68 68 / var(--tw-border-opacity, 1))}.border-yellow-500{--tw-border-opacity:1;border-color:rgb(234 179 8 / var(--tw-border-opacity, 1))}.bg-green-600{--tw-bg-opacity:1;background-color:rgb(22 163 74 / var(--tw-bg-opacity, 1))}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.p-6{padding:1.5rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pb-4{padding-bottom:1rem}.text-center{text-align:center}.align-middle{vertical-align:middle}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:bg-green-700:hover{--tw-bg-opacity:1;background-color:rgb(21 128 61 / var(--tw-bg-opacity, 1))}</style></head>
+<body class="p-6">
+
+    
+
+    <div id="report-content" class="max-w-4xl mx-auto space-y-6">
+        <div class="card">
+            <!-- 리포트 헤더 -->
+            <header class="text-center border-b-2 pb-4 mb-6">
+                <div class="editable">
+                    <h1 class="text-4xl font-black">추천 종목 - 천보 (278280) - 단중기</h1>
+                    <p class="text-lg text-gray-500 mt-2">2025년 10월 20일</p>
+                </div>
+            </header>
+
+            <!-- 핵심 전략 -->
+            <div class="space-y-4">
+                <div class="editable">
+                    <span class="tag bg-red-100 text-red-800">단기(단타 및 5일안에 승부) 중기(3주이상)</span>
+                </div>
+                <div class="strategy-box border-yellow-500 editable">
+                    <p class="font-bold text-lg">패턴 포인트</p>
+                    <p class="text-gray-700">바닥 탈출 상승 전환</p>
+                </div>
+                <div class="strategy-box border-green-500 editable">
+                    <p class="font-bold text-lg">매수 전략</p>
+                    <p class="text-green-600 font-bold">시초가 ~ 51900원까지 매수 / 2차 매수 대기</p>
+                </div>
+                 <div class="strategy-box border-blue-500 editable">
+                    <p class="font-bold text-lg">매도 전략</p>
+                    <p class="text-blue-600 font-bold">1차 62,500원전후~7만원전후와 돌파 수익 매도</p><p class="text-blue-600 font-bold">2차 78,400원 돌파 시 10만원 전후</p>
+                </div>
+                <div class="strategy-box border-red-500 editable">
+                    <p class="font-bold text-lg">손절 기준</p>
+                    <p class="text-red-600 font-bold">45,000원 (손절)</p>
+                </div>
+                <div class="text-xs text-gray-500 editable">
+                    <p>[모든 정보는 투자 판단의 참고 자료이며 투자의 최종 판단은 스스로 하시기 바랍니다.]</p>
+                    <p>[매수는 항상 분할 매수 기준 비중은 30% 내외 / 수익 매도 후 남은 것은 항상 관리 필수!]</p>
+                </div>
+            </div>
+
+            <hr class="my-8">
+
+            <!-- 투자 포인트 -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4">투자 포인트</h2>
+                <div class="space-y-3 text-gray-800 editable">
+                    <p><strong>- 공정 경쟁력 회복 :&nbsp;</strong>LiPO₂F₂ <strong data-start="1951" data-end="1959">신규공법</strong> 및 <strong data-start="1962" data-end="1975">새만금 설비 가동</strong>으로 <strong data-start="1978" data-end="1987">원가/수율</strong>이 개선 → 마진 정상화 동력</p>
+                    <p><strong>- 포트폴리오 :&nbsp;</strong>LiFSI(전해질염) + LiPO₂F₂·LiDFOP 등 <strong data-start="2092" data-end="2102">첨가제 믹스</strong>로 EV·ESS <strong data-start="2111" data-end="2121">고사양 수요</strong> 대응</p>
+                    <p><strong>- 산업 탄력 :&nbsp;</strong>LiFSI·첨가제의 <strong data-start="2193" data-end="2203">구조적 성장</strong>(고전압·급속충전·저온 성능 수요) 수혜 가능성</p>
+                    <p><strong>- 상반기 실적 턴어라운드 조짐 :&nbsp;</strong>2025년 상반기 연결 기준 매출은 전년동기 대비 **–9.3%**였지만, <strong data-start="178" data-end="193">영업이익은 흑자 전환</strong>, 순손실도 <strong data-start="200" data-end="213">–90.8% 축소</strong>. 개선 요인은 <strong data-start="222" data-end="242">LiPO₂F₂ 신규 공법 적용</strong>과 <strong data-start="244" data-end="268">새만금 생산시설 가동으로 생산 효율↑</strong></p>
+                </div>
+            </div>
+
+            <hr class="my-8">
+
+            <!-- 매매 히스토리 -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4">매매 히스토리</h2>
+                <div class="space-y-2 text-gray-800 editable">
+                     <p>- 고급방 10월17일 장중&nbsp;<span style="color: rgb(72, 72, 72); font-size: 14px;">55300원~52500원사이 1차매수 진행 장중 61900원까지 상승하여 일부 수익 매도 했습니다.</span></p>
+                     <p><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body></html>
